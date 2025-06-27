@@ -1,14 +1,28 @@
 .navbar {
   width: 260px;
-  height: 100vh;
+  height: 100vh; /* Keep this */
+  min-height: 100vh; /* Add this */
+  position: fixed; /* Change from relative to fixed */
+  left: 0;
+  top: 0;
+  overflow-y: auto; /* Change from hidden to auto */
+  overflow-x: hidden;
+  z-index: 1000; /* Ensure sidebar appears above other content */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   flex-direction: column;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
-  position: relative;
-  overflow: hidden;
+}
+
+
+:global(.main-content) {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  min-height: 100vh;
+  padding-bottom: 24px; /* Add bottom padding for content */
 }
 
 .navbar::before {
@@ -125,8 +139,10 @@
 .footer {
   padding: 24px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  z-index: 1;
+  position: sticky;
+  bottom: 0;
+  background: inherit; /* Inherit the gradient background */
+  z-index: 2;
 }
 
 .footer .link {
@@ -184,5 +200,29 @@
   .link[data-active] {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+
+.navbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.navbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.navbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  body {
+    position: relative;
   }
 }

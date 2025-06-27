@@ -1,234 +1,149 @@
 import {
   Box,
-  Button,
   Card,
   Group,
   Title,
   Badge,
   Text,
   Progress,
-  Flex,
   Grid,
-  Divider,
   Stack,
 } from "@mantine/core";
 import { AppIcons } from "@/shared/components/icons/AppIcons";
 
 export default function Dashboard() {
-  const SleepIcon = AppIcons.Sleep;
-  const HeartIcon = AppIcons.Heart;
-  const BreathIcon = AppIcons.Breath;
-  const SnoreIcon = AppIcons.Snore;
-  const WeightIcon = AppIcons.Weight;
-  const BodyIcon = AppIcons.Position;
+  const { Sleep, Heart, Breath, Snore, Weight, Position } = AppIcons;
+
   return (
-    <>
-      {/* Title */}
-      <Box className="grid-rows-2 ml-10">
-        <h1 className="text-xl font-bold ">
-          Sleep Monitoring Dashboard
+    <Box p="xl">
+      <Stack gap="xs" mb="xl">
+        <Title order={2}>Sleep Monitoring Dashboard</Title>
+        <Text c="dimmed">Welcome to your dashboard!</Text>
+      </Stack>
 
-         
-        </h1>
-         <p className="text-sm">Welcome to your dashboard!</p>
-      </Box>
-      {/* Cards */}
-      <Grid className="p-10" gutter="md">
-        {/* Sleep Intensity */}
-        <Grid.Col span={4}>
-          <Card
-            span={4}
-            className="flex flex-col gap-3 shadow-2xl rounded-2xl"
-            bg={"white"}
-            padding={30}
-            align="stretch"
-            shadow="md"
-            h='100%'
-          >
-            <Card.Section h={6} bg="violet" radius="md" />
-            <Group justify="center">
-              <SleepIcon size={40} color="violet" />
-              <Title order={2} className="relative ">
-                Current Sleep Status
-              </Title>
-            </Group>
-
-            <Badge size="xs" color="lime">
-              Sleeping
-            </Badge>
-
-            <Group>
-              <Text size="sm"> Snore Intensity </Text>
-              <Progress
-                radius="md"
-                value={50}
-                size="md"
-                w="100%"
-                color="violet"
-              />{" "}
-              <Text size="sm"> High Level (91%)</Text>
-            </Group>
-          </Card>
-        </Grid.Col>
-
-        {/* Heart Rate */}
-        <Grid.Col span={4} align="stretch">
-          <Card
-            span={4}
-            className="flex flex-col gap-3 shadow-2xl rounded-3xl"
-            bg={"white"}
-            padding={30}
-            shadow="md"
-            h='100%'
-          >
-            <Card.Section h={6} bg="red" radius="md" />
-            <Group justify="center">
-              <HeartIcon size={40} color="red" />
-              <Title order={2} className="relative">
-                Heart Rate
-              </Title>
-            </Group>
-            <Flex justify="center" align="center" h={100}>
-              <Title order={1}>62</Title>
-            </Flex>
-            <Flex justify="center" align="center" h={20}>
-              <Text size="md">BPM - Normal Range</Text>
-            </Flex>
-          </Card>
-        </Grid.Col>
-
-        {/* Breathing Pattern */}
-       <Grid.Col span={4}>
-          <Card
-            className="flex flex-col gap-3 shadow-2xl rounded-2xl pt-3"
-            bg={"white"}
-            padding={30}
-            shadow="md"
-            h='100%'
-            
-          >
-            <Card.Section h={6} bg="orange" radius="md"  />
-            <Group justify="center" className="pt-0">
-              <BreathIcon size={40} color="orange" />
-              <Title order={2} className="relative">
-                Breathing Pattern
-              </Title>
-            </Group>
-
-            <Badge size="xs" color="lime">
-              Normal
-            </Badge>
-
-            <Stack gap="xs">
-              <Text size="sm">Breathing Intensity</Text>
-              <Progress
-                radius="md"
-                value={60}
-                size="md"
-                color="orange"
-              />
-              <Text size="sm">Steady rhythm detected</Text>
-            </Stack>
-          </Card>
-       </Grid.Col>
-
-        {/* Snore Detection */}
-        <Grid.Col span={4} align="stretch">
-          <Card
-            span={4}
-            className="flex  gap-3 shadow-2xl rounded-2xl"
-            bg={"white"}
-            padding={30}
-            shadow="md"
-            h='100%'
-          >
-            <Card.Section h={6} bg="cyan" radius="md" />
-            <Group justify="center">
-              <SnoreIcon size={40} color="cyan" />
-              <Title order={2} className="relative ">
-                Snore Detection
-              </Title>
-            </Group>
-
-            <Stack>
+      <Grid gutter="xl">
+        <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
+          <Card withBorder radius="md" p="xl" h="100%">
+            <Stack gap="md">
               <Group justify="space-between">
-                <Text size="sm">Current Status: </Text>
-                <Badge color="cyan">3H 15M</Badge>
+                <Group gap="sm">
+                  <Sleep size={28} color="violet" />
+                  <Title order={4}>Current Sleep Status</Title>
+                </Group>
+                <Badge color="lime">Sleeping</Badge>
               </Group>
-              <Divider />
-              <Group justify="space-between">
-                <Text size="sm">Last Detected: </Text>
-                <Text>2 mins ago </Text>
-              </Group>
-              <Divider />
-              <Group justify="space-between">
-                <Text size="sm">Frequency(1hr): </Text>
-                <Text>23 Episodes </Text>
-              </Group>
+              <Stack gap="xs">
+                <Text size="sm">Snore Intensity</Text>
+                <Progress value={91} color="violet" size="lg" radius="sm" />
+                <Text size="xs" c="dimmed" ta="right">
+                  High Level (91%)
+                </Text>
+              </Stack>
             </Stack>
           </Card>
         </Grid.Col>
 
-    {/* Weight Sennsor */}
-        <Grid.Col span={4} align="stretch">
-          <Card
-            span={4}
-            className="flex  gap-3 shadow-2xl rounded-2xl"
-            bg={"white"}
-            padding={30}
-            shadow="md"
-            h='100%'
-          >
-            <Card.Section h={6} bg="gray" radius="md" />
-            <Group justify="center">
-              <WeightIcon size={40} color="gray" />
-              <Title order={2} className="relative ">
-                Body Pressure
-              </Title>
-            </Group>
-
-            <Stack justify="center" className="flex flex-col">
-              <Flex justify="center" align="center" h={100}>
-                <Title order={1}>70</Title>
-              </Flex>
-              <Flex justify="center" align="center" h={20}>
-                <Text size="md">kg - Person in bed</Text>
-              </Flex>
+        <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
+          <Card withBorder radius="md" p="xl" h="100%">
+            <Stack gap="md" align="center">
+              <Group gap="sm">
+                <Heart size={28} color="red" />
+                <Title order={4}>Heart Rate</Title>
+              </Group>
+              <Text size="4rem" fw={700}>
+                62
+              </Text>
+              <Badge color="green" variant="light">
+                BPM - Normal Range
+              </Badge>
             </Stack>
           </Card>
         </Grid.Col>
 
-        <Grid.Col span={4} align="stretch">
-          <Card
-            span={4}
-            className="flex  gap-3 shadow-2xl rounded-2xl"
-            bg={"white"}
-            padding={30}
-            shadow="md"
-            h='100%'
-          >
-            <Card.Section h={6} bg="pink" radius="md" />
-            <Group justify="center">
-              <BodyIcon size={40} color="pink" />
-              <Title order={2} className="relative ">
-               Body Position
-              </Title>
-            </Group>
+        <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
+          <Card withBorder radius="md" p="xl" h="100%">
+            <Stack gap="md">
+              <Group justify="space-between">
+                <Group gap="sm">
+                  <Breath size={28} color="orange" />
+                  <Title order={4}>Breathing Pattern</Title>
+                </Group>
+                <Badge color="lime">Normal</Badge>
+              </Group>
+              <Stack gap="xs">
+                <Text size="sm">Breathing Intensity</Text>
+                <Progress value={60} color="orange" size="lg" radius="sm" />
+                <Text size="xs" c="dimmed" ta="right">
+                  Steady rhythm detected
+                </Text>
+              </Stack>
+            </Stack>
+          </Card>
+        </Grid.Col>
 
-            <Stack className="mt-5">
-              <Group justify="space-between">
-                <Text size="sm">Position: </Text>
-                <Text>Side </Text>
+        <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
+          <Card withBorder radius="md" p="xl" h="100%">
+            <Stack gap="md">
+              <Group gap="sm">
+                <Snore size={28} color="cyan" />
+                <Title order={4}>Snore Detection</Title>
               </Group>
-              <Divider />
-              <Group justify="space-between">
-                <Text size="sm">Neck Angle: </Text>
-                <Text>15°</Text>
+              <Stack gap="xs">
+                <Group justify="space-between">
+                  <Text size="sm">Current Status:</Text>
+                  <Badge color="cyan">3h 15m</Badge>
+                </Group>
+                <Group justify="space-between">
+                  <Text size="sm">Last Detected:</Text>
+                  <Text size="sm">2 mins ago</Text>
+                </Group>
+                <Group justify="space-between">
+                  <Text size="sm">Frequency (1hr):</Text>
+                  <Text size="sm">23 Episodes</Text>
+                </Group>
+              </Stack>
+            </Stack>
+          </Card>
+        </Grid.Col>
+
+        <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
+          <Card withBorder radius="md" p="xl" h="100%">
+            <Stack gap="md" align="center">
+              <Group gap="sm">
+                <Weight size={28} color="gray" />
+                <Title order={4}>Body Pressure</Title>
               </Group>
+              <Text size="4rem" fw={700}>
+                70
+              </Text>
+              <Badge color="blue" variant="light">
+                kg - Person in bed
+              </Badge>
+            </Stack>
+          </Card>
+        </Grid.Col>
+
+        <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
+          <Card withBorder radius="md" p="xl" h="100%">
+            <Stack gap="md">
+              <Group gap="sm">
+                <Position size={28} color="pink" />
+                <Title order={4}>Body Position</Title>
+              </Group>
+              <Stack gap="xs">
+                <Group justify="space-between">
+                  <Text size="sm">Position:</Text>
+                  <Text size="sm">Side</Text>
+                </Group>
+                <Group justify="space-between">
+                  <Text size="sm">Neck Angle:</Text>
+                  <Text size="sm">15°</Text>
+                </Group>
+              </Stack>
             </Stack>
           </Card>
         </Grid.Col>
       </Grid>
-    </>
+    </Box>
   );
 }

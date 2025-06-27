@@ -1,30 +1,26 @@
 import { useState } from 'react';
 import {
-  Icon2fa,
-  IconBellRinging,
   IconDatabaseImport,
   IconFingerprint,
   IconKey,
   IconLogout,
-  IconReceipt2,
   IconSettings,
   IconSwitchHorizontal,
 } from '@tabler/icons-react';
 import { MdSpaceDashboard } from "react-icons/md";
 import { FaDatabase } from "react-icons/fa";
 import { GiNightSleep } from "react-icons/gi";
-import { Code, Group } from '@mantine/core';
+import { Avatar, Code, Group, Stack, Text } from '@mantine/core';
 import classes from './sidebar.module.css';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 const data = [
   { link: '/dashboard', label: 'Dashboard', icon: MdSpaceDashboard },
-  { link: '', label: 'Live Data', icon: FaDatabase },
-  { link: '', label: 'Posture & Position', icon: IconFingerprint },
-  { link: '', label: 'Device Controls', icon: IconKey },
-  { link: '', label: 'Databases', icon: IconDatabaseImport },
-  { link: '', label: 'Sleep History', icon: GiNightSleep},
-  { link: '', label: 'System Settings', icon: IconSettings },
+  { link: '/livedata', label: 'Live Data', icon: FaDatabase },
+  { link: '/posture', label: 'Posture & Position', icon: IconFingerprint },
+  { link: '/controls', label: 'Device Controls', icon: IconKey },
+  { link: '/history', label: 'Sleep History', icon: GiNightSleep},
+  { link: '/settings', label: 'System Settings', icon: IconSettings },
 ];
 
 export function Sidebar() {
@@ -32,7 +28,7 @@ export function Sidebar() {
 
   const links = data.map((item) => (
     <Link
-      to='/dashboard'
+      to={item.link}
       className={classes.link}
       data-active={item.label === active || undefined}
       key={item.label}
@@ -52,6 +48,13 @@ export function Sidebar() {
           <Code fw={700} className={classes.version}>
             Micricontroller
           </Code>
+        </Group>
+        <Group my="md" wrap="nowrap" ml='l' pb='md' pl='md'>
+          <Avatar color="cyan" radius="xl">LS</Avatar>
+          <Stack gap={0}>
+            <Text fw={500} c={'white'}>Welcome Lester</Text>
+            <Text c="dimmed" size="sm">lester@example.com</Text>
+          </Stack>
         </Group>
         {links}
       </div>
