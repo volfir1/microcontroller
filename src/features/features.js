@@ -1,0 +1,6 @@
+export {HeartRateCard} from './heart-rate/HeartRateCard'
+export {BreathingPattern} from './breath-pattern/BreathingPattern'
+export {SleepMonitor} from './sleep-monitor/SleepMonitor'
+export {SnoreDetection} from './snore-detection/SnoreDetection'
+export {BodyWeight} from './body-weight/BodyWeight'
+export {SleepPosition} from './sleep-position/SleepPosition'

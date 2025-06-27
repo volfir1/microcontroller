@@ -3,10 +3,11 @@ import { LineChart, BarChart } from "@mantine/charts";
 import { Box, Stack, Title, Text, Group, Grid, Card, Badge } from "@mantine/core";
 import { AppIcons } from "@/shared/components/icons/AppIcons";
 import { heartRateData, breathingData } from "./data";
+import { useHeartRateData } from "@/shared/hooks/useHeartRateData";
 
 const LiveData = () => {
   const { Heart, Breath, Snore, Weight, Position } = AppIcons;
-
+  const {rate, status} = useHeartRateData();
   return (
     <Box p={20}>
       <Stack justify="center" align="center" mb={30}>
@@ -24,7 +25,8 @@ const LiveData = () => {
                     <Heart size={24} color="red" />
                 <Title order={3}>Heart Rate</Title>
               </Group>
-              <Text size="xl" c="dimmed">                69 BPM
+              <Text size="xl" c="dimmed">    
+                {rate} BPM {status}        
               </Text>
             </Group>
             <LineChart
