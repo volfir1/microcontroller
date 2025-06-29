@@ -1,7 +1,7 @@
 
 import { Card, Group, Stack, Text, Title, Badge } from "@mantine/core";
 import { AppIcons } from "@/shared/components/icons/AppIcons";
-import { useBodyWeight } from "@/shared/hooks/useBodyWeight";
+import { useBodyWeight } from "@/shared/hooks/input/useBodyWeight";
 
 export function BodyWeight() {
     const { Weight } = AppIcons;
@@ -23,3 +23,4 @@ export function BodyWeight() {
     </Card>
   );
 }
+

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export function useBodyWeight(){
-    const [weightData, setWeightData] = useState({
+    const [weightData] = useState({
         weight: 93
     })
     return weightData;

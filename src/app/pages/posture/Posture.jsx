@@ -1,23 +1,18 @@
 import { useState } from 'react';
 import { Box, Card, Group, Title, Text, Badge, Stack, Grid, RingProgress, ThemeIcon, Center } from '@mantine/core';
 import { AppIcons } from '@/shared/components/icons/AppIcons';
+import { PostureMonitor } from '@/features/features';
 
 export default function Posture() {
   const { Position, Foot } = AppIcons;
 
   // Mock data - in a real application, this would come from sensors/backend
-  const [position, setPosition] = useState('Side');
-  const [neckAngle, setNeckAngle] = useState(15);
-  const [footElevation, setFootElevation] = useState(10);
-  const [postureStatus, setPostureStatus] = useState('Good');
-  const [lastChange, setLastChange] = useState('Rolled from back to side at 2:03 AM');
-  const [autoResponse, setAutoResponse] = useState('Pillow Adjusted Due to Bad Posture');
+ 
+  const [footElevation] = useState(10);
+  const [lastChange] = useState('Rolled from back to side at 2:03 AM');
+  const [autoResponse] = useState('Pillow Adjusted Due to Bad Posture');
 
-  const getPostureColor = () => {
-    if (postureStatus === 'Good') return 'green';
-    if (postureStatus === 'Bad') return 'orange';
-    return 'red';
-  };
+
 
   return (
     <Box p="xl">
@@ -37,38 +32,7 @@ export default function Posture() {
 
         <Grid.Col span={{ base: 12, lg: 6 }}>
           <Stack gap="xl">
-            <Card withBorder radius="md" p="xl">
-              <Group justify="space-between">
-                <Group gap="sm">
-                  <ThemeIcon size="lg" variant="light">
-                    <Position size={24} />
-                  </ThemeIcon>
-                  <Title order={4}>Current Position</Title>
-                </Group>
-                <Badge size="lg">{position}</Badge>
-              </Group>
-            </Card>
-
-            <Card withBorder radius="md" p="xl">
-              <Group justify="space-between">
-                <Title order={4}>Posture Status</Title>
-                <Badge size="lg" color={getPostureColor()}>{postureStatus}</Badge>
-              </Group>
-            </Card>
-
-            <Card withBorder radius="md" p="xl">
-              <Title order={4} mb="md">Neck Angle</Title>
-              <Center>
-                <RingProgress
-                  size={150}
-                  thickness={15}
-                  roundCaps
-                  sections={[{ value: (neckAngle / 45) * 100, color: getPostureColor() }]}
-                  label={<Text c={getPostureColor()} fw={700} ta="center" size="xl">{neckAngle}°</Text>}
-                />
-              </Center>
-            </Card>
-
+           <PostureMonitor />
             <Card withBorder radius="md" p="xl">
               <Group justify="space-between">
                 <Group gap="sm">

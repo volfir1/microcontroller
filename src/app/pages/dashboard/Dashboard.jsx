@@ -12,14 +12,13 @@ import { AppIcons } from "@/shared/components/icons/AppIcons";
 import {
   SleepMonitor,
   HeartRateCard,
-  BreathingPattern,
   SnoreDetection,
   BodyWeight,
-  SleepPosition
+  NeckAngle
 } from "@/features/features";
 
 export default function Dashboard() {
-  const { Sleep, Heart, Breath, Snore, Weight, Position } = AppIcons;
+  
 
   return (
     <Box p="xl">
@@ -36,10 +35,6 @@ export default function Dashboard() {
         <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
           <HeartRateCard />
         </Grid.Col>
-        {/* Breathing Pattern */}
-        <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
-          <BreathingPattern />
-        </Grid.Col>
         {/* Snore Detection */}
         <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
           <SnoreDetection />
@@ -50,7 +45,7 @@ export default function Dashboard() {
         </Grid.Col>
         {/* Sleep Position */}
         <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
-          <SleepPosition />
+          <NeckAngle />
         </Grid.Col>
       </Grid>
     </Box>

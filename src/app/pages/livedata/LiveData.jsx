@@ -3,7 +3,7 @@ import { LineChart, BarChart } from "@mantine/charts";
 import { Box, Stack, Title, Text, Group, Grid, Card, Badge } from "@mantine/core";
 import { AppIcons } from "@/shared/components/icons/AppIcons";
 import { heartRateData, breathingData } from "./data";
-import { useHeartRateData } from "@/shared/hooks/useHeartRateData";
+import { useHeartRateData } from "@/shared/hooks/input/useHeartRateData";
 
 const LiveData = () => {
   const { Heart, Breath, Snore, Weight, Position } = AppIcons;

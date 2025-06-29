@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import { Card, Group, Stack, Text, Title, Badge } from "@mantine/core";
-import { AppIcons} from "@/shared/components/icons/AppIcons";
-import { useSnoreDetection } from "@/shared/hooks/useSnoreDetection";
+import { AppIcons } from "@/shared/components/icons/AppIcons";
+import { useSnoreDetection } from "@/shared/hooks/input/useSnoreDetection";
+import { useSpeakerControl } from "@/shared/hooks/output/useSpeakerControl";
 
 export function SnoreDetection() {
-    const { Snore } = AppIcons;
-    const {duration, lastDetected, frequency} = useSnoreDetection();
+  const { Snore } = AppIcons;
+  const { duration, lastDetected, frequency, isSnoring } = useSnoreDetection();
+  const { playAlert } = useSpeakerControl();
+
+  useEffect(() => {
+    if (isSnoring) {
+      playAlert("Mag relapse kana!!! Wake up!");
+    }
+  }, [isSnoring]);
+
   return (
     <Card withBorder radius="md" p="xl" h="100%">
       <Stack gap="md">
@@ -15,7 +25,9 @@ export function SnoreDetection() {
         <Stack gap="xs">
           <Group justify="space-between">
             <Text size="sm">Current Status:</Text>
-            <Badge color="cyan">{duration}</Badge>
+            <Badge color={isSnoring ? "red" : "cyan"}>
+              {isSnoring ? "Snoring Now" : duration}
+            </Badge>
           </Group>
           <Group justify="space-between">
             <Text size="sm">Last Detected:</Text>
